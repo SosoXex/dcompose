@@ -35,7 +35,7 @@ services:
       - warb2:/usr/local/tomcat/ROOT
     networks:
       back:
-          ipv4_address: 192.168.0.10
+        ipv4_address: 192.168.0.10
 volumes:
   warb1:
   warb2:
