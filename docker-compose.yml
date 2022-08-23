@@ -12,7 +12,7 @@ services:
     volumes:
       - warb1:/tmp/build
       - warb2:/tmp/build/tmct
-      - ./Config.properties:/tmp/build/app/WebContent
+      - ./4app/Config.properties:/tmp/build/app/WebContent
   mysql:
     image: mysql:8
     ports:
