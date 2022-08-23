@@ -6,5 +6,5 @@ RUN git clone https://github.com/shephertz/App42PaaS-Java-MySQL-Sample.git /tmp/
 COPY ./Config.properties /tmp/build/app/WebContent/
 WORKDIR /tmp/build/
 RUN mvn package -f app/
-RUN cp app/target/*.war ./tmct
+RUN cp app/target/*.war ./
 RUN cp app/WebContent/Config.properties ./tmct

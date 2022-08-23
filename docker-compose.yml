@@ -1,0 +1,42 @@
+version: '2'
+
+networks:
+  back:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+services:
+  builder:
+    build: .
+    volumes:
+      - warb1:/tmp/build
+      - warb2:/tmp/build/tmct
+      - ./Config.properties:/tmp/build/app/WebContent
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./apps/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=S3cret
+      - MYSQL_PASSWORD=app_password
+      - MYSQL_USER=app_user
+      - MYSQL_DATABASE=app_db
+    networks:
+      back:
+        ipv4_address: 192.168.0.11
+  app:
+    image: tomcat:7.0.94-jre7
+    ports:
+      - "8080:8080"
+    volumes:
+      - warb1:/usr/local/tomcat/webapps
+      - warb2:/usr/local/tomcat/ROOT
+    networks:
+      back:
+          ipv4_address: 192.168.0.10
+volumes:
+  warb1:
+  warb2:
