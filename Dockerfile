@@ -10,3 +10,4 @@ RUN mvn package -f app/
 RUN cp app/target/*.war ./
 RUN mv *.war ROOT.war
 RUN cp app/WebContent/Config.properties ./tmct
+CMD ["sleep","120"]
